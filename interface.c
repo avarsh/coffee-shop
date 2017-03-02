@@ -147,11 +147,12 @@ void on_app_volume_change(GtkRange* range, gpointer user_data)
 {
     int index;
     double temp_volume;
-    double new_volume = gtk_range_get_value(range);
+    
+    OVERALL_VOLUME = gtk_range_get_value(range);
 
     /*Set each channel's volume accordingly*/
     for(index = 0; index < PLAYER_NUMBER; index = index + 1) {
-        temp_volume = MIX_MAX_VOLUME * (new_volume / 100) * (channel_volumes[index] / 100);
+        temp_volume = MIX_MAX_VOLUME * (OVERALL_VOLUME / 100) * (channel_volumes[index] / 100);
         Mix_Volume(index, temp_volume);
     }
 }
