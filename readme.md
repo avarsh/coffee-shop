@@ -1,7 +1,7 @@
 # README
 Coffee Shop is an ambient noise player. It plays realistic and natural sounds to help focus while working.
 
-![Coffee Shop](https://cloud.githubusercontent.com/assets/25088746/23506805/fbdfbf36-ff41-11e6-95b8-d128928c02ef.png)
+![Coffee Shop](https://cloud.githubusercontent.com/assets/25088746/26285181/a118970e-3e42-11e7-9998-3ceb9360bc3d.png)
 
 ## DEPENDENCIES
 - gcc
