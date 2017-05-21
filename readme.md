@@ -8,12 +8,11 @@ Coffee Shop is an ambient noise player. It plays realistic and natural sounds to
 - sdl2
 - sdl2_mixer
 - gtk3
+- pkg-config
 
 ## COMPILATION
-This should work:
-
-```gcc `pkg-config --cflags gtk+-3.0` -o Coffee-Shop -lSDL_mixer -lSDL `pkg-config --libs gtk+-3.0` main.c interface.c audio.c file.c```
-
+Provided that you have all the required dependencies, making the compile.sh file executable and executing it should
+create a binary file called 'coffee-shop' in the root directory.
 
 ## CREDITS
 
