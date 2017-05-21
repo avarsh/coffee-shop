@@ -12,7 +12,7 @@ Coffee Shop is an ambient noise player. It plays realistic and natural sounds to
 ## COMPILATION
 This should work:
 
-gcc `pkg-config --cflags gtk+-3.0` -o Coffee-Shop -lSDL_mixer -lSDL `pkg-config --libs gtk+-3.0` main.c interface.c audio.c
+```gcc `pkg-config --cflags gtk+-3.0` -o Coffee-Shop -lSDL_mixer -lSDL `pkg-config --libs gtk+-3.0` main.c interface.c audio.c file.c```
 
 
 ## CREDITS
