@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*h*h*hatomic": "cpp",
-        "atomic": "cpp",
-        "*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*h*harray": "cpp"
-    }
-}
