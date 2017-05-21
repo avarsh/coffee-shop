@@ -2,15 +2,14 @@
 #include "globals.h"
 
 /**
-TODO: allow for each channel to be panned using a slider and the 
+TODO: allow for each channel to be panned using a slider and the
 Mix_SetPanning function
 **/
 
 Mix_Chunk *sounds[PLAYER_NUMBER];
-double OVERALL_VOLUME = 100.0; /*Temporary; volumes will eventually be loaded from config file*/
 
 /*Initialize the sound system*/
-int init() 
+int init_audio()
 {
     if(SDL_Init(SDL_INIT_AUDIO) < 0) {
         printf("Error occured: %s\n", SDL_GetError());
@@ -25,7 +24,7 @@ int init()
     return 0;
 }
 
-int load_files()
+int load_sounds(double* volume_array)
 {
     char *file_names[PLAYER_NUMBER];
     int index;
@@ -38,7 +37,8 @@ int load_files()
     file_names[5] = "sounds/wind.wav";
 
     for(index = 0; index < PLAYER_NUMBER; index = index + 1) {
-        channel_volumes[index] = 50; /*Temporary; the volumes will eventually be loaded from config file*/
+        channel_volumes[index] = *volume_array;
+        volume_array++;
     }
 
     for(index = 0; index < PLAYER_NUMBER; index = index + 1) {
@@ -53,20 +53,20 @@ int load_files()
     return 0;
 }
 
-void play()
+void play(double overall_volume)
 {
-    int index; 
+    int index;
     double volume;
     for(index = 0; index < PLAYER_NUMBER; index = index + 1) {
         Mix_PlayChannel(index, sounds[index], -1);
-        volume = MIX_MAX_VOLUME  * (OVERALL_VOLUME / 100) * (channel_volumes[index] / 100);
+        volume = MIX_MAX_VOLUME  * (overall_volume / 100) * (channel_volumes[index] / 100);
         Mix_Volume(index, volume);
     }
 }
 
-void clean() 
+void clean()
 {
-    int index; 
+    int index;
     Mix_HaltChannel(-1); /*Stop chunks from being played while being freed*/
     for(index = 0; index < PLAYER_NUMBER; index = index + 1) {
         Mix_FreeChunk(sounds[index]);

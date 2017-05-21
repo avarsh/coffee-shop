@@ -13,7 +13,7 @@ GtkWidget* button_images[2];
 
 void on_activate (GtkApplication* app, gpointer user_data);
 void on_window_destroy (GtkWidget* widget, gpointer user_data);
-void build_grid (GtkWidget* grid);
+void build_grid (GtkWidget* grid, double* volume_array);
 
 void on_play_button_click(GtkButton* button, gpointer user_data);
 void on_app_volume_change(GtkRange* range, gpointer user_data);
