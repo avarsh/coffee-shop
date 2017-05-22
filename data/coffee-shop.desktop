@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=Coffee Shop
+Comment=A white noise player
+Exec=coffee-shop
+Icon=coffee-shop
+Terminal=false
