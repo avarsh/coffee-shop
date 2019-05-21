@@ -8,8 +8,7 @@
 
 double OVERALL_VOLUME = 100.0;
 
-int open_file(FILE** config_file, int write_mode)
-{
+int open_file(FILE** config_file, int write_mode) {
     char* home_directory;
     char* config_dir = "/.config/";
     char* file_name = "coffee-shop.conf";
@@ -30,12 +29,10 @@ int open_file(FILE** config_file, int write_mode)
     strcat(config_path, config_dir);
 
     // Make it if it doesn't exist
-    if(stat(config_path, &st) == -1)
-    {
+    if(stat(config_path, &st) == -1) {
         printf("Directory not found!\n");
         dir_create_result = mkdir(config_path, 0700);
-        if(dir_create_result == -1)
-        {
+        if(dir_create_result == -1) {
             // TODO: We need to get the exact error as well...
             printf("Error occured when making configuration directory!\n");
             return 1;
@@ -58,8 +55,7 @@ int open_file(FILE** config_file, int write_mode)
     return 0;
 }
 
-int load_config(double* volume_array, int array_size)
-{
+int load_config(double* volume_array, int array_size) {
     char current_volume[100];
 
     struct stat st;
@@ -73,8 +69,7 @@ int load_config(double* volume_array, int array_size)
 
     int count = 0;
 
-    for(array_index = 0; array_index < array_size; array_index++)
-    {
+    for(array_index = 0; array_index < array_size; array_index++) {
         *volume_array = 50;
         volume_array++;
     }
@@ -87,13 +82,11 @@ int load_config(double* volume_array, int array_size)
 
     open_file(&config_file, CS_FALSE);
 
-    if(config_file)
-    {
+    if(config_file) {
         while((file_char = getc(config_file)) != EOF)
         {
             // TODO: This is dodgy
-            if(file_char == '\n')
-            {
+            if(file_char == '\n') {
                 if(count < PLAYER_NUMBER + 1) {
                   *volume_array = strtod(current_volume, &end);
 
@@ -117,8 +110,7 @@ int load_config(double* volume_array, int array_size)
     return 0;
 }
 
-int write_config(double* volume_array, int array_size)
-{
+int write_config(double* volume_array, int array_size) {
     FILE* config_file;
     int count = 0;
 

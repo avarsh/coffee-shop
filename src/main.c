@@ -3,8 +3,7 @@
 #include "audio.h"
 #include "file.h"
 
-int main (int argc, char **argv)
-{
+int main (int argc, char **argv) {
     GtkApplication *app;
     int status;
     int index;
@@ -14,8 +13,7 @@ int main (int argc, char **argv)
     load_config(volumes, PLAYER_NUMBER + 1);
 
     OVERALL_VOLUME = volumes[0];
-    for(index = 1; index <= PLAYER_NUMBER; index++)
-    {
+    for(index = 1; index <= PLAYER_NUMBER; index++) {
         channel_volumes[index] = volumes[index];
     }
 
@@ -28,8 +26,7 @@ int main (int argc, char **argv)
     g_object_unref (app);
 
     volumes[0] = OVERALL_VOLUME;
-    for(index = 1; index <= PLAYER_NUMBER; index++)
-    {
+    for(index = 1; index <= PLAYER_NUMBER; index++) {
         volumes[index] = channel_volumes[index - 1];
     }
 

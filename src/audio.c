@@ -9,8 +9,7 @@ Mix_SetPanning function
 Mix_Chunk *sounds[PLAYER_NUMBER];
 
 /*Initialize the sound system*/
-int init_audio()
-{
+int init_audio() {
     if(SDL_Init(SDL_INIT_AUDIO) < 0) {
         printf("Error occured: %s\n", SDL_GetError());
         return 1;
@@ -24,8 +23,7 @@ int init_audio()
     return 0;
 }
 
-int load_sounds(double* volume_array)
-{
+int load_sounds(double* volume_array) {
     char *file_names[PLAYER_NUMBER];
     int index;
 
@@ -53,19 +51,17 @@ int load_sounds(double* volume_array)
     return 0;
 }
 
-void play(double overall_volume)
-{
+void play(double overall_volume) {
     int index;
     double volume;
     for(index = 0; index < PLAYER_NUMBER; index = index + 1) {
         Mix_PlayChannel(index, sounds[index], -1);
-        volume = MIX_MAX_VOLUME  * (overall_volume / 100) * (channel_volumes[index] / 100);
+        volume = MIX_MAX_VOLUME * (overall_volume / 100) * (channel_volumes[index] / 100);
         Mix_Volume(index, volume);
     }
 }
 
-void clean()
-{
+void clean() {
     int index;
     Mix_HaltChannel(-1); /*Stop chunks from being played while being freed*/
     for(index = 0; index < PLAYER_NUMBER; index = index + 1) {
